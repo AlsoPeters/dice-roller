@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-center items-center space-y-6 flex-col'>
+      <div className='flex justify-center items-center space-y-6 flex-col p-12'>
         <button onClick={HandleRoll} className=' text-blue-400 text-4xl border-2 p-2 rounded-md cursor-pointer hover:bg-gray-800'>Roll</button>
         <div className='flex flex-row space-x-6'>
           <Dice value={diceValue} />
