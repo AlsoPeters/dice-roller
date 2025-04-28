@@ -1,10 +1,16 @@
 import './App.css'
 import Dice from './components/Dice'
+import Dropdown from './components/Dropdown'
 import { useState } from 'react'
 
 
 function App() {
   const [diceValue, setDiceValue] = useState(1)
+  const [selectedOption, setSelectedOption] = useState(null)
+
+  const handleSelect = (option) => {
+    setSelectedOption(option)
+  }
 
   // Fisher-Yates Shuffle Algorithm
   function shuffleArray(arr) {
@@ -23,9 +29,18 @@ function App() {
   return (
     <>
       <div className='flex justify-center items-center space-y-6 flex-col p-12'>
-        <button onClick={HandleRoll} className=' text-blue-400 text-4xl border-2 p-2 rounded-md cursor-pointer hover:bg-gray-800'>Roll</button>
-        <div className='flex flex-row space-x-6'>
+        {/* <button onClick={HandleRoll} className=' text-blue-400 text-4xl border-2 p-2 rounded-md cursor-pointer hover:bg-gray-800'>Roll</button> */}
+        {/* <div className='flex flex-row space-x-6'>
           <Dice value={diceValue} />
+        </div> */}
+        <div>
+          <p className='text-blue-300 text-4xl'>How many dice?</p>
+          <Dropdown
+            options={['1', '2', '3', '4', '5', '6']}
+            onSelect={handleSelect}
+          />
+
+          {selectedOption && <p>Selected Option: {selectedOption}</p>}
         </div>
 
       </div>
