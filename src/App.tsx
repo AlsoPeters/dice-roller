@@ -1,6 +1,5 @@
 import './App.css'
 import Dice from './components/Dice'
-import Dropdown from './components/Dropdown'
 import { useState } from 'react'
 
 
@@ -35,12 +34,7 @@ function App() {
         </div> */}
         <div>
           <p className='text-blue-300 text-4xl'>How many dice?</p>
-          <Dropdown
-            options={['1', '2', '3', '4', '5', '6']}
-            onSelect={handleSelect}
-          />
 
-          {selectedOption && <p>Selected Option: {selectedOption}</p>}
         </div>
 
       </div>
