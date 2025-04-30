@@ -1,10 +1,19 @@
-import './App.css'
+import { ThemeProvider } from './components/theme-provider'
+import { ModeToggle } from './components/mode-toggle'
 import Dice from './components/Dice'
 import { useState } from 'react'
+
+import { Button } from './components/ui/button'
 
 
 function App() {
   const [diceValue, setDiceValue] = useState(1)
+  const [selectedOption, setSelectedOption] = useState(null)
+  const [diceArray, setDiceArray] = useState([<Dice />])
+
+  const handleSelect = (option) => {
+    setSelectedOption(option)
+  }
 
   // Fisher-Yates Shuffle Algorithm
   function shuffleArray(arr) {
@@ -20,15 +29,31 @@ function App() {
     setDiceValue(sides[0])
   }
 
+  function handleAddDice() {
+    setDiceArray(prev => [...prev, <Dice />])
+  }
+
   return (
     <>
-      <div className='flex justify-center items-center space-y-6 flex-col'>
-        <button onClick={HandleRoll} className=' text-blue-400 text-4xl border-2 p-2 rounded-md cursor-pointer hover:bg-gray-800'>Roll</button>
-        <div className='flex flex-row space-x-6'>
-          <Dice value={diceValue} />
+      <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+        <div className='flex'>
+          <div className='ml-auto p-4'>
+            <ModeToggle />
+          </div>
         </div>
+        <div className='flex justify-center items-center space-y-6 flex-col p-12'>
+          <div>
+            <p className='text-blue-300 text-4xl'>How many dice?</p>
+            <Button onClick={handleAddDice}>Add 1 D6</Button>
+          </div>
+          <div className='flex space-x-4'>
+            {diceArray.map((_, index) => (
+              <Dice key={index} />
+            ))}
+          </div>
+        </div>
+      </ThemeProvider>
 
-      </div>
     </>
   )
 }
