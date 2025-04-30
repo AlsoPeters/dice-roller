@@ -44,7 +44,7 @@ function App() {
         <div className='flex justify-center items-center space-y-6 flex-col p-12'>
           <div>
             <p className='text-blue-300 text-4xl'>How many dice?</p>
-            <Button onClick={handleAddDice}>Add Dice</Button>
+            <Button onClick={handleAddDice}>Add 1 D6</Button>
           </div>
           <div className='flex space-x-4'>
             {diceArray.map((_, index) => (
