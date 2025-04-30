@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 
 const Dice = ({ value = 1 }) => {
+
+  
   const renderDots = (value) => {
     const dots = [];
     
